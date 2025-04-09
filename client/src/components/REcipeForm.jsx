@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { createRecipe } from '../api/recipes';  // Assuming you have an API function to create recipes
 
 const RecipeForm = () => {
-  const [name, setName] = useState('');
+  const [title, setTitle] = useState(''); 
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
@@ -13,9 +13,9 @@ const RecipeForm = () => {
     e.preventDefault();
     try {
       const recipeData = {
-        name,
+        title,  
         description,
-        ingredients: ingredients.split(','),
+        ingredients: ingredients.split(','),  
         instructions,
       };
       await createRecipe(recipeData);
@@ -31,11 +31,11 @@ const RecipeForm = () => {
       <h1>Create Recipe</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name</label>
+          <label>Title</label>  {/*  */}
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={title}  
+            onChange={(e) => setTitle(e.target.value)}  
             required
           />
         </div>
