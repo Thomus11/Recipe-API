@@ -1,5 +1,3 @@
-// src/components/ReviewForm.jsx
-
 import React, { useState } from 'react';
 import { createReview } from '../api/reviews';  // Assuming you have an API function to create reviews
 

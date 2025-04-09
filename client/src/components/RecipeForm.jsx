@@ -1,5 +1,3 @@
-// src/components/RecipeForm.jsx
-
 import React, { useState } from 'react';
 import { createRecipe } from '../api/recipes';  // Assuming you have an API function to create recipes
 
@@ -31,7 +29,7 @@ const RecipeForm = () => {
       <h1>Create Recipe</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Title</label>  {/*  */}
+          <label>Title</label>  
           <input
             type="text"
             value={title}  
