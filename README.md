@@ -1,5 +1,5 @@
-Recipe Finder Maker
-Recipe Finder Maker is a full-stack application designed to allow users to browse, create, review, and manage recipes. It consists of two main parts:
+Recipe API
+Recipe API is a full-stack application designed to allow users to browse, create, review, and manage recipes. It consists of two main parts:
 
 Backend: A Python-based backend using Flask to handle API routes, user authentication, and data management.
 
@@ -16,9 +16,7 @@ Add, update, and delete their own recipes.
 Favorite recipes and leave reviews.
 
 Project Structure
-bash
-Copy
-recipe-finder-maker/
+
 │
 ├── backend/
 │   ├── app/
@@ -80,6 +78,7 @@ recipe-finder-maker/
 ├── .env
 ├── README.md
 └── .gitignore
+
 Features
 Backend
 Flask-based API: The backend is built using Flask, and it provides endpoints to interact with the recipes, reviews, favorites, and user authentication.
@@ -123,15 +122,9 @@ Bootstrap / CSS: For responsive and styled components.
 Installation
 Backend
 Clone the repository:
-
-bash
-Copy
-git clone https://github.com/your-username/recipe-finder-maker.git
-cd recipe-finder-maker/backend
+git clone https://github.com/Thomus11/Recipe-API
+cd Recipe-API
 Create a virtual environment:
-
-bash
-Copy
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 Install dependencies:
