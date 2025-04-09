@@ -24,3 +24,9 @@ class FavoriteSchema(ma.SQLAlchemyAutoSchema):
         model = Favorite
         load_instance = True
         include_fk = True
+
+
+recipe_schema = RecipeSchema()        # Instance for a single recipe
+recipes_schema = RecipeSchema(many=True) # Instance for multiple recipes (e.g., a list of recipes)
+review_schema = ReviewSchema()        # Instance for a single review
+reviews_schema = ReviewSchema(many=True) # Instance for multiple reviews (e.g., a list of recipes)
