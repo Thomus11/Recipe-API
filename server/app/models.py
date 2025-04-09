@@ -7,6 +7,10 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
 
+    recipes = db.relationship('Recipe', backref='creator', lazy=True)
+    reviews = db.relationship('Review', backref='reviewer', lazy=True)
+    favorites = db.relationship('Favorite', backref='user', lazy=True)
+
 
 
 class Recipe(db.Model):
@@ -16,6 +20,10 @@ class Recipe(db.Model):
     instructions = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String(255))
 
+    created_by_user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    reviews = db.relationship('Review', backref='recipe', lazy=True)
+    favorites = db.relationship('Favorite', backref='recipe', lazy=True)
+
 
 
 class Review(db.Model):
@@ -23,6 +31,9 @@ class Review(db.Model):
     content = db.Column(db.Text, nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
 
