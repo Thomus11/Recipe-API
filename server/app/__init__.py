@@ -16,6 +16,8 @@ def create_app():
     ma.init_app(app)
     migrate.init_app(app, db)
 
+    from .models import User, Recipe, Review, Favorite
+
     from .routes import api_bp
     app.register_blueprint(api_bp)
 
