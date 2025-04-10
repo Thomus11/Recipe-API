@@ -13,7 +13,7 @@ export const createRecipe = async ({ title, ingredients, instructions, image_url
       title,
       ingredients,
       instructions,
-      image_url, // optional: can be null or empty string
+      image_url,
     }),
   });
 
