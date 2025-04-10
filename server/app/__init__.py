@@ -1,0 +1,24 @@
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
+from flask_migrate import Migrate
+from config import Config
+
+db = SQLAlchemy()
+ma = Marshmallow()
+migrate = Migrate()
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    db.init_app(app)
+    ma.init_app(app)
+    migrate.init_app(app, db)
+
+    from .models import User, Recipe, Review, Favorite
+
+    from .routes import api_bp
+    app.register_blueprint(api_bp)
+
+    return app
