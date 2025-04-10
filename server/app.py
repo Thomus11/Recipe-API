@@ -1,12 +1,34 @@
 
-from flask import request
-from flask_restful import Api, Resource
-from flask import jsonify
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-app = Flask(__name__)
-api  = Api(app)
+from flask import Flask, jsonify, request, session
+from flask_cors import CORS
+from flask_migrate import Migrate
+from flask_restful import Api, Resource
+from werkzeug.security import generate_password_hash, check_password_hash
+
 # Local imports
-from config import app, db, api
+from server.models import User, Recipe, Review, Favorite
+from server.extensions import db, bcrypt
+
+# Instantiate app, set attributes
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'your_secret_key'
+app.json.compact = False
+
+# Initialize extensions
+db.init_app(app)
+migrate = Migrate(app, db)
+
+# Instantiate REST API
+api = Api(app)
+
+# Instantiate CORS
+CORS(app)
 
 
 
